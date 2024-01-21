@@ -35,7 +35,6 @@ if(GTest_FOUND)
 include(GoogleTest)
 endif()
 
-find_package(Threads REQUIRED)
 find_package(CURL REQUIRED)
 find_package(jsoncpp)
 
@@ -82,7 +81,6 @@ target_include_directories(restclient-cpp PRIVATE "${CMAKE_CURRENT_BINARY_DIR}/i
 
 target_link_libraries(restclient-cpp
   PUBLIC CURL::libcurl
-  PUBLIC Threads::Threads
 )
 
 include(GNUInstallDirs)
@@ -105,7 +103,6 @@ file(WRITE "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}Config.cmake.in"
   "@PACKAGE_INIT@\n"
   "include(CMakeFindDependencyMacro)\n"
   "find_dependency(CURL REQUIRED)\n"
-  "find_dependency(Threads REQUIRED)\n"
   "include(\${CMAKE_CURRENT_LIST_DIR}/\@PROJECT_NAME\@Targets.cmake)\n")
 configure_package_config_file(
   ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}Config.cmake.in
